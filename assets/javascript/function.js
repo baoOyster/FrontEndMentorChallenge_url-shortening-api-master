@@ -34,18 +34,24 @@ function createResult(oldLink, newLink){
     const searchBarAndLink = document.getElementById('searchBarAndLink');
     const linkMessage = document.createElement('div');
     linkMessage.setAttribute('class', 'shortLink');
-    linkMessage.innerHTML = `<p class="old-link">${oldLink}</p> <p class="new-link">${newLink}</p> <button class="buttons linkButton">Copy</button>`
+    linkMessage.innerHTML = `<p class="old-link">${oldLink}</p> <input type="text" class="new-link" readonly value="${newLink}"/> <button class="buttons linkButton">Copy</button>`
     searchBarAndLink.appendChild(linkMessage);
 
 }
 
 function copied(event){
     event.target.innerHTML = "Copied!";
-    event.target.backgroundColor = "hsl(260, 8%, 14%)";
+    event.target.style.backgroundColor = "hsl(257, 27%, 26%)";
+    const parentNode = event.target.parentNode;
+    const input = parentNode.querySelector('input');
+    input.select();
+    input.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(input.value);
 };
 
-function copyLink(event){
-    
-}
+
+
+
+
 
 export { openMobileNav, closeMobileNav, createWarning, removeWarning, createResult, copied};

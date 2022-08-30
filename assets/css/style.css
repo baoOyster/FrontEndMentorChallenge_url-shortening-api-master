@@ -636,6 +636,12 @@ footer h3 {
     flex: 29%;
     color: hsl(180, 66%, 49%)!important;
     overflow-x: scroll;
+    border: none;
+    font-size: 1rem;
+}
+
+.new-link:focus-visible{
+    outline: none;
 }
 
 .linkButton{

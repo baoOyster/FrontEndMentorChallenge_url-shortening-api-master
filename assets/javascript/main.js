@@ -5,7 +5,6 @@ const inputField = document.getElementById('inputField');
 const shorteningButton = document.getElementById('shorteningButton');
 
 
-
 async function shortenTheUrl(){
     try{
         const url = "https://api.shrtco.de/v2";
