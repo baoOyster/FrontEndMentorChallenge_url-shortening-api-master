@@ -29,4 +29,23 @@ function removeWarning(){
         inputAndWarning.removeChild(warningMessage);
     }
 }
-export { openMobileNav, closeMobileNav, createWarning, removeWarning};
+
+function createResult(oldLink, newLink){
+    const searchBarAndLink = document.getElementById('searchBarAndLink');
+    const linkMessage = document.createElement('div');
+    linkMessage.setAttribute('class', 'shortLink');
+    linkMessage.innerHTML = `<p class="old-link">${oldLink}</p> <p class="new-link">${newLink}</p> <button class="buttons linkButton">Copy</button>`
+    searchBarAndLink.appendChild(linkMessage);
+
+}
+
+function copied(event){
+    event.target.innerHTML = "Copied!";
+    event.target.backgroundColor = "hsl(260, 8%, 14%)";
+};
+
+function copyLink(event){
+    
+}
+
+export { openMobileNav, closeMobileNav, createWarning, removeWarning, createResult, copied};

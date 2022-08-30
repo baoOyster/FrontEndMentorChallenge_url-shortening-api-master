@@ -1,4 +1,4 @@
-import { openMobileNav, closeMobileNav, createWarning, removeWarning } from "./function.js";
+import { openMobileNav, closeMobileNav, createWarning, removeWarning, createResult, copied } from "./function.js";
 const closeButton = document.getElementById('closeButton');
 const mobileNavBar = document.getElementById('mobileNavBar');
 const inputField = document.getElementById('inputField');
@@ -16,7 +16,13 @@ async function shortenTheUrl(){
         }, { cache: 'no-cache' });
         if(response.ok){
             const jsonResponse = await response.json();
-            console.log(jsonResponse);
+            createResult(inputField.value, jsonResponse.result.short_link)
+            // console.log(document.querySelectorAll('.shortLink'));
+            if(document.querySelectorAll('.shortLink') !== null){
+            document.querySelectorAll('.linkButton').forEach(item => {
+                item.addEventListener('click', copied)
+              })
+        }
         }
     }
     catch(e){
@@ -38,7 +44,8 @@ function init() {
             removeWarning();
             shortenTheUrl();
         }
-    });
+    }
+    );
 }
 
 window.onload = init;
